@@ -1,16 +1,17 @@
 import React from "react";
-import { Dimensions, FlatList } from "react-native";
+import { Dimensions, FlatList, Image } from "react-native";
+
 import { formatPhotoUri } from "../api/picsum";
 
-export const PhotoGrid = (photos, numColumns, onEndReached) => {
-  const { width } = Dimensions.get("window"); //   screen 너비
-
-  const size = width / numColumns; //   화면에 보일 이미지 크기
+export const PhotoGrid = ({ photos, numColumns, onEndReached }) => {
+  const { width } = Dimensions.get("window");
+  const size = width / numColumns;
 
   return (
     <FlatList
       data={photos}
       keyExtractor={(item) => item.id}
+      numColumns={numColumns}
       onEndReached={onEndReached}
       renderItem={({ item }) => (
         <Image

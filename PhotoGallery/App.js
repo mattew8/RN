@@ -41,11 +41,14 @@ export default function App() {
       );
     }
   }
+
   return (
-    <PhotoGrid numColumns={3} photos={photos} onEndReached={fetchPhotos} />
+    <View style={styles.container}>
+      <Text>{photos.length}</Text>
+      <PhotoGrid photos={photos} numColumns={3} onEndReached={fetchPhotos} />
+    </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
